@@ -84,22 +84,25 @@ void atualizar_sensores(int posicao, int correcao) {
     double color_alpha = 0.05;  // Reduz brilho dos LEDs
     uint32_t frame[25] = {0}; // Matriz de 5x5
 
-    // Linha do meio (posição real da linha) - Azul
+    // Linha do meio (posição real da linha) - ciano
     for (int i = 0; i < 5; i++) {
         if ((centro - posicao) == i) {
-            frame[5 + i] = matrix_rgb(color_alpha * 1, color_alpha * 0, color_alpha * 0); // Azul
+            frame[5 + i] = matrix_rgb(color_alpha * 1, color_alpha * 0, color_alpha * 1); // ciano
         }
     }
 
-    // Linha abaixo (correção do PID) - Verde
+    // Linha acima (correção do PID) - vermelho
     for (int i = 0; i < 5; i++) {
         if ((centro - correcao) == i) {
-            frame[14 - i] = matrix_rgb(color_alpha * 0, color_alpha * 1, color_alpha * 0); // Verde
+            frame[14 - i] = matrix_rgb(color_alpha * 0, color_alpha * 1, color_alpha * 0); // vermelho
         }
     }
 
     // Atualiza a matriz de LEDs
     for (int i = 0; i < 25; i++) {
+        if(i>=5 && i < 10)
+        pio_sm_put_blocking(pio, sm, frame[i]?frame[i]:matrix_rgb(0,0,0.005*1));//verde
+        else
         pio_sm_put_blocking(pio, sm, frame[i]);
     }
 }
