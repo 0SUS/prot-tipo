@@ -36,16 +36,12 @@ Este projeto implementa a simulação de um algoritmo PID acoplado a um robô se
 
 ```
 /
-├── src/                 # Código-fonte principal
-│   ├── main.c          # Implementação do algoritmo PID e controle do hardware
-│   ├── ssd1306.c       # Driver para o display OLED
+│   ├── ADC_DisplayC.c   # Implementação do algoritmo PID e controle do hardware
 │   ├── matriz_led.pio  # Programa PIO para controle da matriz de LEDs
 ├── lib/                 # Bibliotecas auxiliares
 │   ├── ssd1306.h       # Header do display OLED
+│   ├── ssd1306.c       # Driver para o display OLED
 │   ├── font.h          # Definição de fontes para o display
-├── docs/                # Documentação e diagramas
-│   ├── relatorio.pdf   # Relatório final do projeto
-│   ├── diagrama.png    # Diagrama em blocos do sistema
 └── README.md            # Este arquivo
 ```
 
